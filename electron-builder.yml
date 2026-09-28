@@ -24,4 +24,4 @@ publish:
   provider: github
   owner: nyomanbaihaqi
   repo: Norea_photoboothApp
-  releaseType: release
+  releaseType: draft # workflow release yang menerbitkan setelah upload selesai

@@ -47,6 +47,7 @@ Ingatan jangka panjang proyek: **status terkini**, **log keputusan**, dan **pert
 | D-23 | 2026-09-28 | ID file Drive dipesan di awal (`generateIds`) supaya QR bisa tampil/tercetak sebelum upload selesai | Halaman `/d` otomatis retry sampai foto tersedia |
 | D-24 | 2026-09-28 | Ketinggalan status printer dari Windows ditutup dengan hitungan `inFlight` 12 detik per job | `JobCount` driver sering telat muncul |
 | D-25 | 2026-09-28 | Build lokal `npm run dist` pakai `--publish never`, upload rilis hanya dari workflow release | Build lokal tidak butuh token GitHub |
+| D-27 | 2026-09-28 | Workflow rilis: buat draft dulu → electron-builder upload → terbitkan | v0.1.0 sempat jadi 2 rilis dobel karena upload paralel |
 | D-26 | 2026-09-28 | Auto-update via `electron-updater` + GitHub Releases: cek 30 dtk setelah buka & tiap 4 jam, download di background, **pasang saat app ditutup / tombol operator**, tidak pernah restart sendiri, diblok saat Mode Tamu | Update tidak boleh mengganggu sesi tamu di tengah event |
 
 ## Pertanyaan Terbuka
@@ -55,7 +56,7 @@ Ingatan jangka panjang proyek: **status terkini**, **log keputusan**, dan **pert
 |---|---|---|---|
 | Q-01 | Konfirmasi: web pendamping di Vercel tetap dipakai (untuk kamera HP & halaman download QR)? | Ya, hanya halaman statis & gratis | Menunggu |
 | Q-02 | Warna brand & logo Norea untuk tema aplikasi dan halaman download? | Kirim logo PNG + 1–2 warna utama | Menunggu |
-| Q-03 | Nama akun GitHub & Vercel Norea yang akan dipakai? | – | ✅ GitHub: `nyomanbaihaqi/Norea_photoboothApp` (private). Vercel menunggu |
-| Q-06 | Repo kode private, jadi auto-update butuh repo rilis public terpisah. Boleh dibuat? | Buat `nyomanbaihaqi/Norea_photoboothApp-releases` (public, isinya cuma installer) | Menunggu |
+| Q-03 | Nama akun GitHub & Vercel Norea yang akan dipakai? | – | ✅ GitHub: `nyomanbaihaqi/Norea_photoboothApp` (public). Vercel disetup sendiri oleh pemilik |
+| Q-06 | Repo private atau public (untuk auto-update)? | – | ✅ Repo dijadikan public oleh pemilik |
 | Q-04 | Printer & kamera apa yang tersedia untuk uji coba? | Minimal 2 printer + 1 webcam + 1 HP Android | Menunggu |
 | Q-05 | Siapa yang membuat Google Cloud project (OAuth client)? | Akun Google Norea, ikuti [19-deployment.md](19-deployment.md) | Menunggu |

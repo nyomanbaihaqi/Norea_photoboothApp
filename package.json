@@ -12,7 +12,8 @@
     "typecheck": "tsc --noEmit -p tsconfig.node.json && tsc --noEmit -p tsconfig.web.json",
     "start": "electron-vite preview",
     "dist": "electron-vite build && electron-builder --win --publish never",
-    "test": "vitest run"
+    "test": "vitest run",
+    "release": "npm version patch -m \"chore: rilis v%s\" && git push --follow-tags"
   },
   "dependencies": {
     "@fontsource/bebas-neue": "^5.3.0",

@@ -11,7 +11,7 @@ Ada tiga hal yang di-deploy/disiapkan:
 ## 1. GitHub
 
 1. Buat akun/organisasi GitHub Norea (misal `norea`).
-2. Repo: **`nyomanbaihaqi/Norea_photoboothApp`** (private).
+2. Repo: **`nyomanbaihaqi/Norea_photoboothApp`** (public).
 3. Di laptop developer:
    ```bash
    git init
@@ -21,12 +21,12 @@ Ada tiga hal yang di-deploy/disiapkan:
    git remote add origin https://github.com/nyomanbaihaqi/Norea_photoboothApp.git
    git push -u origin main
    ```
-4. **Sumber auto-update:** `electron-builder.yml` → `publish` (sekarang `nyomanbaihaqi/Norea_photoboothApp`). Karena repo kode private, ganti `repo` ke repo rilis public (lihat bagian Auto-update).
-5. **Rilis versi baru:** workflow `.github/workflows/release.yml` jalan otomatis saat tag didorong:
+4. **Sumber auto-update:** `electron-builder.yml` → `publish` = `nyomanbaihaqi/Norea_photoboothApp` (repo public).
+5. **Rilis versi baru** (dari branch `main` yang bersih):
    ```bash
-   npm version patch
-   git push --follow-tags
+   npm run release
    ```
+   Perintah ini menaikkan versi (misal 0.1.0 → 0.1.1), membuat tag, lalu push. Workflow `.github/workflows/release.yml` lalu: membuat draft rilis → build installer di Windows → upload → menerbitkan rilis.
    Hasilnya `Norea-Photobooth-Setup-x.y.z.exe` + `latest.yml` di tab **Releases**.
 
 ### Auto-update
