@@ -184,6 +184,11 @@ function UpdateCard({ onToggle }: { onToggle(v: boolean): void }) {
   const status = useApp((s) => s.update)
   const [busy, setBusy] = useState(false)
 
+  // Ambil status terbaru saat kartu dibuka (jaga-jaga kalau ada event yang terlewat)
+  useEffect(() => {
+    void window.api.update.status().then((u) => useApp.setState({ update: u }))
+  }, [])
+
   async function check(): Promise<void> {
     setBusy(true)
     useApp.setState({ update: await window.api.update.check() })
