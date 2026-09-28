@@ -10,6 +10,8 @@ permissions:
 jobs:
   windows:
     runs-on: windows-latest
+    env:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - uses: actions/checkout@v5
       - uses: actions/setup-node@v5
@@ -19,7 +21,14 @@ jobs:
       - run: npm ci
       - run: npm run typecheck
       - run: npm test
-      - name: Build & publish installer
+
+      # Rilis dibuat dulu sebagai draft. Kalau tidak, electron-builder bisa membuat
+      # 2 rilis sekaligus karena upload paralel (pernah terjadi di v0.1.0).
+      - name: Buat draft rilis
+        run: gh release create ${{ github.ref_name }} --draft --title "Norea Photobooth ${{ github.ref_name }}" --generate-notes
+
+      - name: Build & upload installer
         run: npx electron-vite build && npx electron-builder --win --publish always
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Terbitkan rilis
+        run: gh release edit ${{ github.ref_name }} --draft=false --latest
