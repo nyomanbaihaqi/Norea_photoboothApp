@@ -10,7 +10,7 @@ Urutan fase disusun supaya **setiap fase menghasilkan sesuatu yang bisa dicoba**
 | 3 | Layout, Frame Generator & Preview | Template bawaan + upload PNG, teks nama/tanggal/info, preview mockup, galeri | ✅ Selesai, diuji |
 | 4 | Multi-printer | Pilih printer, print senyap, pembagian otomatis, status, cetak ulang | 🧪 Kode selesai, belum uji cetak nyata |
 | 5 | Google Drive + QR + halaman download | Login Google, link folder per event, upload + antrian offline, QR, web `/d` di Vercel | 🧪 Kode selesai, butuh OAuth client & deploy Vercel |
-| 6 | Kamera HP | Web `/camera` di Vercel, sambung via QR, foto resolusi penuh | 🧪 Kode selesai, butuh deploy Vercel untuk uji HP |
+| 6 | Kamera HP | Web `/camera` di Vercel, sambung via QR, foto resolusi penuh | ✅ Diuji via Vercel (HP simulasi). Tinggal uji HP asli |
 | 7 | Packaging & uji lapangan | Installer, CI/CD GitHub, auto-update, uji event nyata, perbaikan | 🚧 Installer, CI & auto-update siap. Uji lapangan belum |
 | 8 | AI Photobooth | Tema (bola, sekolah, pekerjaan, game, dll) | ⏸️ Ditunda |
 

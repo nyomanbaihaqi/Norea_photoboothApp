@@ -13,7 +13,8 @@ Ingatan jangka panjang proyek: **status terkini**, **log keputusan**, dan **pert
   - Semua halaman: Studio, Event, Frame Generator, Preview & Galeri, Printer (6 printer terdeteksi), Pengaturan, AI (placeholder)
   - Web pendamping `/d` (download) & `/camera` (kamera HP) tampil benar di viewport HP (server lokal)
   - `npm run typecheck` lulus, 34 unit test lulus, `npm run dist` → `dist/Norea-Photobooth-Setup-0.1.0.exe`
-- **Belum diuji:** cetak ke printer nyata, upload Google Drive (butuh OAuth client), kamera HP end-to-end (butuh deploy Vercel), installer di laptop bersih
+- **Kamera HP diuji end-to-end** via Vercel (Chrome + kamera palsu sebagai HP): tersambung, sesi jalan, foto diterima **1920×1080** lewat data channel
+- **Belum diuji:** cetak ke printer nyata, upload Google Drive (butuh OAuth client), kamera HP dengan HP asli, installer di laptop bersih
 - **Auto-update:** sudah dibuat & dicek di versi terpaket (status error jelas: "Belum ada rilis di GitHub"). Alur update end-to-end belum diuji karena repo belum ada. `owner` di `electron-builder.yml` masih `GANTI-AKUN-NOREA`
 - **Belum dibuat:** code signing, repo GitHub & project Vercel (menunggu akun Norea)
 - **Catatan:** ikon `build/icon.png` masih sementara, ganti dengan logo Norea asli
@@ -56,7 +57,7 @@ Ingatan jangka panjang proyek: **status terkini**, **log keputusan**, dan **pert
 |---|---|---|---|
 | Q-01 | Konfirmasi: web pendamping di Vercel tetap dipakai (untuk kamera HP & halaman download QR)? | Ya, hanya halaman statis & gratis | Menunggu |
 | Q-02 | Warna brand & logo Norea untuk tema aplikasi dan halaman download? | Kirim logo PNG + 1–2 warna utama | Menunggu |
-| Q-03 | Nama akun GitHub & Vercel Norea yang akan dipakai? | – | ✅ GitHub: `nyomanbaihaqi/Norea_photoboothApp` (public). Vercel disetup sendiri oleh pemilik |
+| Q-03 | Nama akun GitHub & Vercel Norea yang akan dipakai? | – | ✅ GitHub: `nyomanbaihaqi/Norea_photoboothApp` (public). Vercel: https://norea-photobooth-app.vercel.app |
 | Q-06 | Repo private atau public (untuk auto-update)? | – | ✅ Repo dijadikan public oleh pemilik |
 | Q-04 | Printer & kamera apa yang tersedia untuk uji coba? | Minimal 2 printer + 1 webcam + 1 HP Android | Menunggu |
 | Q-05 | Siapa yang membuat Google Cloud project (OAuth client)? | Akun Google Norea, ikuti [19-deployment.md](19-deployment.md) | Menunggu |

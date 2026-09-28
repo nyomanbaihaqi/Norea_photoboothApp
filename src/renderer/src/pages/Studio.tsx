@@ -286,6 +286,17 @@ function PhonePanel() {
         <>
           <img src={qr} className="mx-auto w-44 rounded-lg bg-white p-1.5" />
           <p className="text-muted">Scan pakai HP, lalu izinkan akses kamera</p>
+          <div className="flex items-center gap-1 rounded-md bg-bg p-1.5 text-left">
+            <span data-phone-url={url} className="min-w-0 flex-1 truncate text-[10px] text-muted">
+              {url}
+            </span>
+            <button
+              className="shrink-0 rounded bg-panel-2 px-2 py-0.5 text-[10px] hover:bg-line"
+              onClick={() => void navigator.clipboard.writeText(url)}
+            >
+              Salin
+            </button>
+          </div>
         </>
       )}
     </div>
