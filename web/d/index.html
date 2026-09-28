@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="robots" content="noindex" />
+    <title>Foto kamu · Norea Photobooth</title>
+    <link rel="stylesheet" href="/assets/style.css" />
+    <style>
+      body {
+        background: radial-gradient(ellipse at top, #1f232c, #0f1115 70%);
+      }
+      .wrap {
+        max-width: 520px;
+        margin: 0 auto;
+        padding: 24px 16px 40px;
+        text-align: center;
+      }
+      header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+      }
+      .event {
+        font-size: 26px;
+        font-weight: 700;
+        margin: 4px 0 2px;
+      }
+      .photo {
+        margin: 22px auto;
+        border-radius: 10px;
+        overflow: hidden;
+        background: #fff;
+        box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.7);
+        min-height: 200px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .photo img {
+        display: block;
+        width: 100%;
+        height: auto;
+      }
+      .actions {
+        display: grid;
+        gap: 10px;
+      }
+      .hint {
+        font-size: 13px;
+        margin-top: 14px;
+      }
+      #waiting {
+        padding: 40px 10px;
+        color: #111;
+      }
+      footer {
+        margin-top: 36px;
+        font-size: 12px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <header>
+        <div class="logo">NOREA<span>.</span></div>
+        <div class="muted" style="font-size: 13px">Photobooth</div>
+      </header>
+
+      <div class="muted" style="font-size: 14px">Kenangan dari</div>
+      <div class="event" id="event">Photobooth</div>
+
+      <div class="photo">
+        <img id="img" alt="Foto photobooth" hidden />
+        <div id="waiting">
+          <div class="spinner" style="margin: 0 auto 14px"></div>
+          <div id="waitText">Memuat foto…</div>
+        </div>
+      </div>
+
+      <div class="actions" id="actions" hidden>
+        <a class="btn btn-primary" id="download" rel="noopener">⬇ Download foto</a>
+        <a class="btn btn-ghost" id="open" target="_blank" rel="noopener">Buka di Google Drive</a>
+      </div>
+      <p class="hint muted" id="hint" hidden>
+        Di iPhone: tekan lama foto di atas → <b>Simpan ke Foto</b>.
+      </p>
+
+      <div id="error" class="center" hidden style="min-height: auto">
+        <p>Link foto tidak valid. Coba scan ulang QR di booth ya.</p>
+      </div>
+
+      <footer class="muted">Foto disimpan di Google Drive penyelenggara acara.</footer>
+    </div>
+
+    <script>
+      ;(function () {
+        var params = new URLSearchParams(location.search)
+        var id = params.get('id') || ''
+        var eventName = params.get('e') || ''
+        var img = document.getElementById('img')
+        var waiting = document.getElementById('waiting')
+        var waitText = document.getElementById('waitText')
+
+        if (eventName) {
+          document.getElementById('event').textContent = eventName
+          document.title = 'Foto ' + eventName + ' · Norea Photobooth'
+        }
+        if (!/^[a-zA-Z0-9_-]{10,}$/.test(id)) {
+          document.querySelector('.photo').hidden = true
+          document.getElementById('error').hidden = false
+          return
+        }
+
+        var sources = [
+          'https://lh3.googleusercontent.com/d/' + id + '=w2000',
+          'https://drive.google.com/thumbnail?id=' + id + '&sz=w2000'
+        ]
+        var attempt = 0
+        var maxAttempts = 40
+
+        function tryLoad() {
+          // lh3 dicoba sekali; setelah itu thumbnail Drive + cache-buster
+          var src = attempt === 0 ? sources[0] : sources[1] + '&t=' + Date.now()
+          img.onload = function () {
+            waiting.hidden = true
+            img.hidden = false
+            document.getElementById('actions').hidden = false
+            if (/iPhone|iPad/.test(navigator.userAgent)) document.getElementById('hint').hidden = false
+          }
+          img.onerror = function () {
+            attempt++
+            if (attempt >= maxAttempts) {
+              waitText.textContent = 'Foto belum tersedia. Coba buka lagi link ini beberapa menit lagi ya.'
+              return
+            }
+            if (attempt >= 2) waitText.textContent = 'Foto sedang diupload dari booth… sebentar ya'
+            setTimeout(tryLoad, attempt < 2 ? 300 : 5000)
+          }
+          img.src = src
+        }
+
+        document.getElementById('download').href = 'https://drive.google.com/uc?export=download&id=' + id
+        document.getElementById('open').href = 'https://drive.google.com/file/d/' + id + '/view'
+        tryLoad()
+      })()
+    </script>
+  </body>
+</html>

@@ -1,0 +1,28 @@
+appId: com.norea.photobooth
+productName: Norea Photobooth App
+directories:
+  buildResources: build
+  output: dist
+files:
+  - out/**
+  - package.json
+win:
+  icon: build/icon.png
+  target:
+    - target: nsis
+      arch: [x64]
+  artifactName: Norea-Photobooth-Setup-${version}.${ext}
+nsis:
+  oneClick: false
+  allowToChangeInstallationDirectory: true
+  createDesktopShortcut: true
+  shortcutName: Norea Photobooth
+# Sumber auto-update (GitHub Releases).
+# PERHATIAN: repo ini PRIVATE, jadi aplikasi terinstal tidak bisa download update dari sini.
+# Supaya auto-update jalan, buat repo PUBLIC khusus rilis lalu ganti "repo" di bawah
+# (lihat docs/19-deployment.md bagian Auto-update).
+publish:
+  provider: github
+  owner: nyomanbaihaqi
+  repo: Norea_photoboothApp
+  releaseType: release
