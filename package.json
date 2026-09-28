@@ -1,7 +1,7 @@
 {
   "name": "norea-photobooth",
   "productName": "Norea Photobooth App",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Aplikasi photobooth desktop: kamera, frame, multi-printer, upload Google Drive",
   "main": "./out/main/index.js",
   "author": "Norea",
