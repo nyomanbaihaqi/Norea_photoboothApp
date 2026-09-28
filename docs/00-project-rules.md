@@ -16,7 +16,7 @@ Aturan ini berlaku untuk semua orang dan semua agent yang mengerjakan Norea Phot
 
 ## Akun & Kepemilikan
 
-- Repo GitHub dan project Vercel memakai **akun khusus Norea**, bukan akun pribadi Faiz.
+- Repo GitHub dan project Vercel memakai **akun khusus Norea**, bukan akun pribadi.
 - Pembuatan akun, login, dan pengisian kredensial dilakukan sendiri oleh pemilik akun. Agent hanya menyiapkan kode dan langkah-langkahnya.
 
 ## Git

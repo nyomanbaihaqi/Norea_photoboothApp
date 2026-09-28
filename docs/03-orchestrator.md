@@ -2,7 +2,7 @@
 
 ## Peran
 
-Orchestrator adalah **koordinator utama**. Dia menerima permintaan dari pemilik proyek (Faiz), menentukan agent mana yang mengerjakan, mengatur urutan, dan memastikan setiap task memenuhi Definition of Done ([00-project-rules.md](00-project-rules.md)).
+Orchestrator adalah **koordinator utama**. Dia menerima permintaan dari pemilik proyek, menentukan agent mana yang mengerjakan, mengatur urutan, dan memastikan setiap task memenuhi Definition of Done ([00-project-rules.md](00-project-rules.md)).
 
 Orchestrator **tidak menulis kode fitur secara langsung** kecuali perubahan kecil (typo, config satu baris).
 

@@ -40,7 +40,7 @@ Ingatan jangka panjang proyek: **status terkini**, **log keputusan**, dan **pert
 | D-16 | 2026-09-28 | Proteksi operator: **PIN** saja | Cukup sederhana |
 | D-17 | 2026-09-28 | UI **Bahasa Indonesia** | Permintaan pemilik proyek |
 | D-18 | 2026-09-28 | Ukuran cetak default: 4R (1/grid 2x2/3 foto/landscape), strip 2x6 (2 per lembar 4R), 5R | Pemilik proyek belum tahu ukuran yang dipakai, jadi dipilih ukuran umum photobooth |
-| D-19 | 2026-09-28 | Repo GitHub & Vercel memakai **akun Norea**, bukan akun pribadi Faiz | Permintaan pemilik proyek |
+| D-19 | 2026-09-28 | Repo GitHub & Vercel memakai **akun Norea**, bukan akun pribadi | Permintaan pemilik proyek |
 | D-20 | 2026-09-28 | Data lokal pakai file JSON (`data.json`), bukan SQLite | Hindari native module yang mempersulit build Electron. Volume data kecil |
 | D-21 | 2026-09-28 | Signaling kamera HP pakai **PeerJS Cloud** | Tidak perlu server sendiri. Vercel tidak mendukung websocket |
 | D-22 | 2026-09-28 | Mirror berlaku untuk live view **dan** hasil foto (WYSIWYG) | Tamu melihat hasil sama persis dengan yang dilihat di layar |
